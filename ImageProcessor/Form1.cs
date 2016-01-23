@@ -32,7 +32,7 @@ namespace ImageProcessor
         /***********************************************
          *    File Menu
          ***********************************************/
-
+        // Open image
         public void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -41,29 +41,30 @@ namespace ImageProcessor
             }
         }
 
+        // Save modified image
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                int height = pictureBox1.Image.Height;
-                int width = pictureBox1.Image.Width;
-
-                Console.WriteLine("height = " + height +
-                    "width = " + width);
-
-
+                pictureBox1.Image.Save(saveFileDialog1.FileName, ImageFormat.Jpeg);
                 
-
-                Bitmap newBitmap = new Bitmap(width, height);
-                DrawToBitmap(newBitmap, new Rectangle(0, 0, width, height));
-                newBitmap.Save(saveFileDialog1.FileName, ImageFormat.Jpeg);
-
             }
+        }
+
+        // Customize color changes/matrix
+        private void customToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frm2 = new Form2();
+            frm2.Show();
+            origImage = pictureBox1.Image;
+
         }
 
         //************************************
         //      Color Filters
         //************************************
+
+        // Greyscale color matrix
         private void usingColorMatrixToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Create new bitmap based on size of opened picture
@@ -98,6 +99,7 @@ namespace ImageProcessor
 
         }
 
+        // Negative color matrix
         private void negativeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Bitmap newBitmap = new Bitmap(pictureBox1.Image.Width, pictureBox1.Image.Height);
@@ -127,26 +129,9 @@ namespace ImageProcessor
         }
 
 
+       
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            usingColorMatrixToolStripMenuItem_Click(sender, e);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            negativeToolStripMenuItem_Click(sender, e);
-        }
-
-        
-        private void customToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frm2 = new Form2();
-            frm2.Show();
-            origImage = pictureBox1.Image;
-
-        }
-
+        // Custom color matrix
         public void customColorMatrix()
         {
 
@@ -175,19 +160,30 @@ namespace ImageProcessor
             pictureBox1.Image = newBitmap;
         }
 
+        /* NOT SURE IF NEEDED
         public void customOKButton()
         {
             origImage = pictureBox1.Image;
         }
+        */
 
+        /******************************************************
+         *              User Interface
+         * ****************************************************/
+
+        // UI button for greyscale color matrix
+        private void button1_Click(object sender, EventArgs e)
+        {
+            usingColorMatrixToolStripMenuItem_Click(sender, e);
+        }
+
+        // UI button for negative color matrix
+        private void button2_Click(object sender, EventArgs e)
+        {
+            negativeToolStripMenuItem_Click(sender, e);
+        }
       
 
-      
-
-       
-
-       
-
-       
+     
     }
 }
