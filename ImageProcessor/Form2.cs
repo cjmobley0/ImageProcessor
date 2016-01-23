@@ -19,7 +19,6 @@ namespace ImageProcessor
         public double redModifier = 0;
         public double greenModifier = 0;
         public double blueModifier = 0;
-        bool applyClicked = false;
     
         
         public Form2()
@@ -27,30 +26,6 @@ namespace ImageProcessor
             InitializeComponent();
         }
        
-        // Apply button: Set custom color matrix
-        public void button1_Click(object sender, EventArgs e)
-        {
-            
-            if (System.Windows.Forms.Application.OpenForms["Form1"] != null)
-            {
-                (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).customColorMatrix();
-                applyClicked = true;
-            }
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            // If apply button not triggered, do so once
-            if (applyClicked == false)
-            {
-                button1_Click(null, new EventArgs());
-            }
-
-            // Set orig image to finalized custom filter image
-            (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).customOKButton();
-        }
-        
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
@@ -61,7 +36,6 @@ namespace ImageProcessor
             if (System.Windows.Forms.Application.OpenForms["Form1"] != null)
             {
                 (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).customColorMatrix();
-                applyClicked = true;
             }
             
         }
@@ -75,7 +49,6 @@ namespace ImageProcessor
             if (System.Windows.Forms.Application.OpenForms["Form1"] != null)
             {
                 (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).customColorMatrix();
-                applyClicked = true;
             }
         }
 
@@ -88,7 +61,6 @@ namespace ImageProcessor
             if (System.Windows.Forms.Application.OpenForms["Form1"] != null)
             {
                 (System.Windows.Forms.Application.OpenForms["Form1"] as Form1).customColorMatrix();
-                applyClicked = true;
             }
             
         }

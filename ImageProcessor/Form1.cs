@@ -56,6 +56,7 @@ namespace ImageProcessor
         {
             frm2 = new Form2();
             frm2.Show();
+
             origImage = pictureBox1.Image;
 
         }
@@ -160,12 +161,6 @@ namespace ImageProcessor
             pictureBox1.Image = newBitmap;
         }
 
-        /* NOT SURE IF NEEDED
-        public void customOKButton()
-        {
-            origImage = pictureBox1.Image;
-        }
-        */
 
         /******************************************************
          *              User Interface
